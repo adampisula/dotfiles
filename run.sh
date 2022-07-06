@@ -2,7 +2,9 @@
 
 dir=$(echo $HOME)/Projects/dotfiles
 
-echo $dir
+# XRESOURCES
+ln -sf $dir/Xresources ~/.Xresources
+
 # BASH FILES
 ln -sf $dir/bash_aliases ~/.bash_aliases
 ln -sf $dir/bash_motd ~/.bash_motd
