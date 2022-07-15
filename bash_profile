@@ -37,3 +37,4 @@ bashstat() {
 mu() {
     mpv --input-ipc-server=/tmp/mpv-socket --shuffle -- ~/music/*  
 }
+. "$HOME/.cargo/env"

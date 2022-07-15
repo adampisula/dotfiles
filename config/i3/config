@@ -29,6 +29,7 @@ bindsym $mod+q kill
 bindsym $mod+space exec $rofi appmenu
 bindsym $mod+Tab exec $rofi tabmenu
 bindsym $mod+Shift+e exec $rofi powermenu
+bindsym $mod+m exec $rofi emoji
 
 bindsym $mod+L exec $lock
 
@@ -171,7 +172,7 @@ exec_always xset +fp /home/adam/.fonts/
 exec_always xset fp rehash
 
 # Run startup wallpaper
-exec_always bash -c "feh --bg-fill ~/Pictures/background.jpg"
+exec_always bash -c "/usr/bin/feh --bg-fill ~/Pictures/background.jpg"
 
 # Allow scripts to interface with dbus
 exec_always --no-startup-id ~/scripts/misc/xdbus.sh
