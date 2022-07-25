@@ -33,6 +33,9 @@ chmod +x $dir/Scripts/display-color.py
 ln -sf $dir/Scripts/lock.sh ~/Scripts/lock.sh
 chmod +x $dir/Scripts/lock.sh
 
+ln -sf $dir/Scripts/multihead.sh ~/Scripts/multihead.sh
+chmod +x $dir/Scripts/multihead.sh
+
 ln -sft $dir/Scripts/misc ~/Scripts/
 chmod +x $dir/Scripts/misc/*
 
