@@ -1,10 +1,12 @@
 [colors]
-background = #1e2137 
+;background = #1e2137 
+background = #191c19
 foreground = #e3eaf3
 primary = #02c084
 secondary = #65a2d9
 tertiary = #d07ef2
-fourth = #e5c246
+;fourth = #e5c246
+fourth = #9be546
 alert = #ed404c
 
 [section/base]
@@ -112,11 +114,13 @@ label-focused-foreground = ${colors.fourth}
 label-focused-padding = 1
 
 label-unfocused = ${self.label-focused}
-label-unfocused-foreground = #0a7383
+;label-unfocused-foreground = #0a7383
+label-unfocused-foreground = #6caeb8
 label-unfocused-padding = ${self.label-focused-padding}
 
 label-visible = ${self.label-focused}
-label-visible-foreground = #0a7383
+;label-visible-foreground = #0a7383
+label-visible-foreground = #6caeb8
 label-visible-padding = ${self.label-focused-padding}
 
 label-urgent = ${self.label-focused}

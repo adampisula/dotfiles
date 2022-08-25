@@ -1,6 +1,8 @@
 
 # ~/.bashrc: executed by bash(1) for non-login shells.
 
+BROWSER=/usr/bin/firefox
+
 # If not running interactively, don't do anything
 case $- in
     *i*) ;;
@@ -94,3 +96,51 @@ export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
 [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
 . "$HOME/.cargo/env"
+
+# -= start battery prompt =-
+battery_status(){
+BATTERY=/sys/class/power_supply/BAT1 #this is for pinephone and pinetab
+BATSTATE=$(cat ${BATTERY}/status)
+CHARGE=$(cat ${BATTERY}/capacity)
+NON='\001\e[0m\002'
+BLD='\001\e[1m\002'
+RED='\001\e[1;31m\002'
+GRN='\001\e[1;32m\002'
+YEL='\001\e[1;33m\002'
+COLOUR="$RED"
+case "${BATSTATE}" in
+  'Charged')
+    BATSTT="="
+  ;;
+  'Charging')
+    BATSTT="+"
+  ;;
+  'Not charging'|'Discharging')
+    BATSTT="-"
+  ;;
+  *)
+    BATSTT="*"
+  ;;
+esac
+# prevent a charge of more than 100% displaying
+if [ "$CHARGE" -gt "99" ]
+then
+  CHARGE=100
+fi
+if [ "$CHARGE" -gt "24" ]
+then
+  COLOUR="$YEL"
+fi
+if [ "$CHARGE" -gt "34" ]
+then
+  COLOUR="$GRN"
+fi
+printf "[${BATSTT}${COLOUR}${CHARGE}%%${NON}]"
+} #end of battery_status()
+if [ $(id -u) -eq 0 ];
+then # you are root, set red colour prompt
+  PS1='$(battery_status)\[\033[1;31m\]\u\[\033[0;32m\]@\h\[\033[1;34m\] \w\[\033[0m\]\$ '
+else # normal user
+  PS1='$(battery_status)\[\033[1;36m\]\u\[\033[0;32m\]@\h\[\033[1;34m\] \w\[\033[0m\]\$ '
+fi
+# -=end battery prompt=-```
